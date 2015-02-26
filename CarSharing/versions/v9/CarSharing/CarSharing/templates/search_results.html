@@ -1,0 +1,24 @@
+
+{% extends "base.html" %}
+
+{% block title %}Search for {{ term }}{% endblock %}
+
+{% block content %}
+
+<p> You searched for <strong>{{ term }}</strong></p>
+
+{% if wdata %}
+    <p>Found {{ wdata|length }} journey record{{ wdata|pluralize }}.</p>
+    <div id="menu"></div>
+    <ol>
+    {% for w in wdata %}
+        <li>From: {{ w.from_place }} To: {{ w.to_place }}, on: {{ w.time }}, Car Reg: {{ w.reg }} , free spaces: {{w.seats_free}}<br></li>
+    {% endfor %}
+    </ol>
+    </div>
+
+{% else %}
+    <p> No journey data found for {{ term }}</p>
+{% endif %}
+
+{%  endblock %}
