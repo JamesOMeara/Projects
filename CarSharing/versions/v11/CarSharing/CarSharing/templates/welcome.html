@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Welcome to UNILIFT{% endblock %}
+
+{% block content %}
+
+
+
+    {% if user.is_authenticated %}
+<p>Welcome to UniLift.</p>
+    {% else %}
+
+    <p>Please login (or Register) first.</p>
+
+{% endif %}
+
+{%  endblock %}
