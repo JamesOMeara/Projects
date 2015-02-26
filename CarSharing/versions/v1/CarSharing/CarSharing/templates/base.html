@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    display: inline;
+}
+</style>
+</head>
+
+<body>
+<h1><strong><center>Car Sharing</center></strong></h1>
+
+<ul>
+ <center> <li><a href="/welcome"> Home </a></li>
+          <li><a href="/login"> Login </a></li></center>
+</ul>
+<hr>
+{% block content %} {% endblock %}
+
+{% block footer %}
+<hr>
+{% if user.is_authenticated %}
+    <p>{{ user }} is currently logged in...</p>
+{% else %}
+    <p>Not logged in yet...</p>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>
+
