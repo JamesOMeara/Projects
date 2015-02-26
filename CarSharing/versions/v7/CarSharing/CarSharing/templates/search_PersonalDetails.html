@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Search for Books{% endblock %}
+
+{% block content %}
+
+{% if error %}
+<pstyle="color:red;"> {{ msg }} </p>
+<p style="color:red;">Please submit a search term.</p>
+{% endif %}
+
+
+<meta http-equiv="refresh" content="0; url=http://danu6.it.nuigalway.ie:8651/searchPersonal/?q={{user}}" />
+
+{%  endblock %}

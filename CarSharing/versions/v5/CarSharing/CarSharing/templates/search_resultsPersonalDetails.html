@@ -1,0 +1,31 @@
+
+{% extends "base.html" %}
+
+{% block title %}Search for {{ term }} in Books{% endblock %}
+
+{% block content %}
+
+<p> You searched for <strong>{{ term }}</strong></p>
+
+{% if wdata %}
+    <p>Found {{ wdata|length }} weather data record{{ wdata|pluralize }}.</p>
+    <div id="menu"></div>
+    <ol>
+    {% for w in wdata %}
+        <li>ID: {{ w.driver_id }} <br></li>
+        <li>Name: {{w.firstname}} {{lastname}}  <br></li>
+        <li>Name: {{w.firstname}}  <br></li>
+        <li>Name: {{w.firstname}}  <br></li>
+        <li>Name: {{w.firstname}}  <br></li>
+        <li>Name: {{w.firstname}}  <br></li>
+    {% endfor %}
+    
+    
+    </ol>
+    </div>
+
+{% else %}
+    <p> No weather data found for {{ term }}</p>
+{% endif %}
+
+{%  endblock %}

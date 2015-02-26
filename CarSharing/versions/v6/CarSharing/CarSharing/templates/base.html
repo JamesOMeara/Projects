@@ -1,0 +1,45 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %} {% endblock %}</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li {
+    display: inline;
+}
+</style>
+</head>
+
+
+<img src="{{ STATIC_URL }}img/logo.png" alt="My image"/>
+
+<body>
+<h1><center> Car Sharing </center></h1>
+<ul><center>
+  <li><a href="/welcome/">Home</a></li>
+  <li><a href="/profile/">Profile</a></li>
+  <li><a href="/accounts/login/">Login</a></li>
+  <li><a href="/accounts/register/">Register</a></li>
+  <li><a href="/search-form/">Search</a></li>
+  <li><a href="/accounts/logout/">Logout</a></li>
+</center></ul>
+<hr>
+{% block content %} {% endblock %}
+
+{% block footer %}
+<hr>
+{% if user.is_authenticated %}
+    <p>{{ user }} is currently logged in.</p>
+{% else %}
+    <p>Not logged in yet.</p>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>
