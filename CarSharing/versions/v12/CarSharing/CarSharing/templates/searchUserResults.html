@@ -1,0 +1,36 @@
+
+{% extends "base.html" %}
+
+{% block title %}Search for {{ term }}{% endblock %}
+
+{% block content %}
+
+
+
+<p> You searched for <strong>{{ term }}</strong></p>
+
+{% if wdata %}
+    <div id="menu"></div>
+    {% for w in wdata %}
+        
+        <p>Username: {{ w.driver_id }}</p>
+        <p>Phone Number: {{w.phone}} </p>
+        <p>Gender: {{w.gender}} </p>
+            <br>
+    {% endfor %}
+    </div>
+    
+    <div id="menu"></div>
+    <ol>
+    {% for r in rdata %}
+        <li>
+        <p>Journey name: {{ r.journey_name }}, From: {{r.from_place}} to {{r.to_place}}</p></li>
+    {% endfor %}
+    </ol>
+    </div>
+
+{% else %}
+    <p> No journey data found for {{ term }}</p>
+{% endif %}
+
+{%  endblock %}

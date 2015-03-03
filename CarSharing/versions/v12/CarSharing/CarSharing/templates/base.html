@@ -1,0 +1,97 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>{% block title %} {% endblock %}</title>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=80%">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <meta name="viewport" content="width=device-width, inital-scale=1.0" >
+    
+    <link rel="icon" href="../../favicon.ico">
+<!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/jumbotron/jumbotron.css" rel="stylesheet">
+
+
+    <script src="http://getbootstrap.com/assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!--HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    [if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]
+    <style> body{padding-top:50px}</style>
+    <style> body{padding-right:50px}</style>
+    <style> body{padding-left: 50px}</style>
+</head>
+
+<!-- <img src="{{ STATIC_URL }}img/logo.png" alt="My image"/> -->
+
+<body>
+
+<meta name="viewport" content="width=device-width, inital-scale=1.0" >
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+       <!-- <div class="navbar-header">
+         <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>-->
+    <a class="navbar-brand" href="/welcome/">Home</a>
+    <a class="navbar-brand" href="/profile/">Profile</a>
+    
+    <a class="navbar-brand" href="/accounts/login/">Login</a>
+    <a class="navbar-brand" href="/accounts/register/">Register</a>
+    
+    <a class="navbar-brand" href="/search-form/">Search Journey</a>
+    <a class="navbar-brand" href="/searchUserForm/">Search User</a>
+    
+    <a class="navbar-brand" href="/accounts/logout/">Logout</a>
+    
+    
+
+
+<h1><center> Car Sharing </center></h1>
+
+<!--<ul><center>
+  <li><a href="/welcome/">Home</a></li>
+  <li><a href="/searchPersonal/?q={{user}}">Profile</a></li>
+  <li><a href="/accounts/login/">Login</a></li>
+  <li><a href="/accounts/register/">Register</a></li>
+  <li><a href="/search-form/">Search</a></li>
+  <li><a href="/accounts/logout/">Logout</a></li>
+</center>
+-->
+</ul>
+
+<hr>
+<div class="jumbotron">
+      <div class="container">
+	 <p> <img src="http://www.studiourody-krystyna.pl/graf/logo.png" alt="logo" style="width:304px;height:228px; float:right ;margin-top:-60px;"><h1> UniLift!</h1></p>
+{% block content %}
+
+
+ {% endblock %}
+
+{% block footer %}
+<hr>
+{% if user.is_authenticated %}
+    <p>{{ user }} is currently logged in.</p>
+{% else %}
+    <p>Not logged in yet.</p>
+{% endif %}
+
+{% endblock %}
+</body>
+</html>
