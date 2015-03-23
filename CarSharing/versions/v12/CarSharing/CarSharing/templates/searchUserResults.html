@@ -13,9 +13,10 @@
     <div id="menu"></div>
     {% for w in wdata %}
         
-        <p>Username: {{ w.driver_id }}</p>
+        <p>Username: {{ w.client_id }}</p>
         <p>Phone Number: {{w.phone}} </p>
         <p>Gender: {{w.gender}} </p>
+        <p>State: {{w.client_is}} </p>
             <br>
     {% endfor %}
     </div>

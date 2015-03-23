@@ -8,22 +8,25 @@ class CarSharingDataForm(forms.Form):
     seats_free = forms.IntegerField(label="Seats Free")
 
 
-class details_driverForm(forms.Form):
-  BOOLEAN_CHOICES = (('1', 'Male'), ('0', 'Female'))
+BOOLEAN_CHOICES = (('Male','Male'), ('Female','Female'))
+CLIENT_CHOICES = (('Driver','Driver'), ('Passanger','Passanger'))
+DEVIATE_CHOICE = (('0km','No'),('5','5km'), ('10','10km'), ('15+','15km +'))
+
+class details_ClientForm(forms.Form):
   firstname = forms.CharField(label="First Name:")
   lastname = forms.CharField(label="Last Name:")
   email = forms.CharField(label="Email:")
   age = forms.IntegerField(label="Age:")
   phone = forms.IntegerField(label="Contact Number:")
-  gender = forms.ChoiceField(choices = BOOLEAN_CHOICES, widget = forms.RadioSelect)
+  gender = forms.ChoiceField(choices = BOOLEAN_CHOICES)
+  client_is = forms.ChoiceField(choices = CLIENT_CHOICES) 
   home = forms.CharField(label="Home Address:")
-  car_reg = forms.CharField(label="Car Reg")
-  car_desc = forms.CharField(label="Car Description")
-  seats_free = forms.CharField(label="Number of seats in car")
+
   
   
+
+
 class routeForm(forms.Form):
-    BOOLEAN_CHOICES = (('True', 'True label'), ('False', 'False label'))
     journey_name = forms.CharField(label="Route Name:")
     from_place = forms.CharField(label="From:")
     to_place    = forms.CharField(label="To:")
@@ -31,7 +34,7 @@ class routeForm(forms.Form):
     price = forms.IntegerField(label="Price overall:")
     seats_free = forms.IntegerField(label="Seats Available:")
     car_desc= forms.CharField(label="Car Description:")
-    deviate = forms.ChoiceField(choices = BOOLEAN_CHOICES, widget = forms.RadioSelect)
+    deviate = forms.ChoiceField(choices = DEVIATE_CHOICE)
 
 
 class messagesForm(forms.Form):

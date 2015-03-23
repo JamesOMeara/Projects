@@ -21,12 +21,13 @@
     <ol>
 
     {% for w in wdata %}
-        <li>ID: {{ w.driver_id }} <br></li>
+        <li>ID: {{ w.client_id }} <br></li>
         <li>Name: {{w.firstname}} {{w.lastname}}  <br></li>
         <li>Email: {{w.email}}  <br></li>
         <li>Age: {{w.age}}  <br></li>
         <li>Phone: {{w.phone}}  <br></li>
         <li>Gender: {{w.gender}}  <br></li>
+        <li>State: {{w.client_is}}  <br></li>
         <li>Home: {{w.home}}  <br></li>
         <li>Car Reg: {{w.car_reg}}  <br></li>
         <li>Car Description: {{w.car_desc}}  <br></li>

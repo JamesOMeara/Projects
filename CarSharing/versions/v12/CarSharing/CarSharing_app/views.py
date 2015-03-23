@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import render_to_response,RequestContext
-from CarSharing_app.models import clientMessages, route, driver
-from CarSharing_app.forms import details_driverForm, routeForm, messagesForm
+from CarSharing_app.models import clientMessages, route, driver, drivers_car
+from CarSharing_app.forms import details_ClientForm, routeForm, messagesForm
 from django.contrib.auth.decorators import login_required
 
 from django import forms
@@ -38,7 +38,8 @@ def logout(request):
 #############################################################################
 def welcome(request):
     text = request.user.username
-    return render(request,'welcome.html', {'text':text})
+    data = route.objects.all()
+    return render(request,'welcome.html', {'text':text, 'wdata':data})
 
 
 
@@ -50,7 +51,7 @@ def profile(request):
   term = request.user.username
   if not term:
     return render_to_response('profile.html',{'error':True})
-  data = driver.objects.filter(driver_id=term)
+  data = driver.objects.filter(client_id=term)
   data_route = route.objects.filter(driver_id = term)
 
   if not data:
@@ -79,7 +80,7 @@ def searchUserForm(request):
 def searchUser(request):
     if 'u' in request.GET:
         term = request.GET['u']
-        data = driver.objects.filter(driver_id=term)
+        data = driver.objects.filter(client_id=term)
         data2 = route.objects.filter(driver_id= term)
     if not term:
         return render_to_response('searchUserForm.html',{'error':True})
@@ -168,6 +169,7 @@ def storeCarSharingData(request):
                           deviate= cd['deviate'])
             wd.save()
             print("Saved CarSharing record...")
+            return HttpResponseRedirect('/profile/') # Redirect after POST
         else:
             return render(request,
                           'wdata_form.html',{'form':form})
@@ -181,7 +183,7 @@ def storeCarSharingData(request):
 ##############################################################################################
 @login_required
 def addDriverData(request):
-    form = details_driverForm()
+    form = details_ClientForm()
     return render(request,
                   'add_PersonalDetails.html',
                   {'form':form})
@@ -191,24 +193,23 @@ def addDriverData(request):
 @login_required
 def storeDriverData(request):
     if request.method == 'POST':
-        form = details_driverForm(request.POST)
+        form = details_ClientForm(request.POST)
         name = request.user.username
         
         if(form.is_valid()):
             cd = form.cleaned_data
-            wd = driver(driver_id= name,
+            wd = driver(client_id= name,
                                 firstname=cd['firstname'],
                                 lastname=cd['lastname'],
                                 email = cd['email'],
                                 age=cd['age'],
                                 phone =cd['phone'],
                                 gender = cd['gender'],
-                                home =cd['home'],
-                                car_reg =cd['car_reg'],
-                                car_desc =cd['car_desc'],
-                                seats_free = cd['seats_free'])
+                                client_is = cd['client_is'],
+                                home =cd['home'])
             wd.save()
             print("Saved CarSharing record...")
+            return HttpResponseRedirect('/profile/') # Redirect after POST
         else:
             return render(request,
                           'add_PersonalDetails.html',{'form':form})
@@ -246,6 +247,7 @@ def store_message(request):
                           driverMessage = cd['driverMessage'])
             wd.save()
             print(name, "Sent message.")
+            return HttpResponseRedirect('/messanger/') # Redirect after POST
         else:
             return render(request, 'store_message.html', {'form':form})
     return render(request, 'profile.html')

@@ -20,7 +20,7 @@
     <div id="menu"></div>
     <ol>
     {% for w in wdata %}
-        <li>From: {{ w.from_place }} To: {{ w.to_place }}, on: {{ w.time }}, Car Reg: {{ w.reg }} , {{w.seats_free}} free spaces.   -{{w.driver_id}}<br></li>
+        <li>From: {{ w.from_place }} To: {{ w.to_place }}, on: {{ w.time }}, Car Reg: {{ w.reg }} , {{w.seats_free}} free spaces. deviate:{{w.deviate}}km  -{{w.driver_id}}<br></li>
     {% endfor %}
     </ol>
     </div>
