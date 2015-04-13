@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+{% if error %}
+<pstyle="color:red;"> {{ msg }} </p>
+<p style="color:#070000;">Please submit a search term.</p>
+{% endif %}
+
+<form action="/search/" method="get">
+<p style="color:#070000;">Please submit a starting Destination </p>
+    <input type="text" name="q">
+    <input type="submit" value="Search">
+</form>
+
+
+
+
+
+<form action="/search_to/" method="get">
+<p style="color:#070000;">Please submit a finishing Destination </p>
+    <input type="text" name="t">
+    <input type="submit" value="Search">
+</form>
+
+
+
+
+<form action="/search_journey/" method="get">
+<p style="color:#070000;">Please submit a Journey Name </p>
+    <input type="text" name="n">
+    <input type="submit" value="Search">
+</form>
+
+
+{%  endblock %}

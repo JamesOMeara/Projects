@@ -1,0 +1,41 @@
+
+{% extends "base.html" %}
+
+{% block title %}Info for {{ term }}{% endblock %}
+
+{% block content %}
+
+<br><br>
+<p>All Information regarding this route.<p>
+
+<a href="/messanger/"> Send Message </a>
+<a href="/take_journey/"> Apply </a>
+
+
+{% if wdata %}
+    {% for w in wdata %}
+            <p>From: {{ w.from_place }} To: {{ w.to_place }}</p>
+            <p>Date: {{ w.time }}</p>
+            <p>Car Reg: {{ w.reg }} , {{w.seats_free}} free spaces.</p>
+            <p>deviate: {{w.deviate}}</p>
+            <p>Driving: {{w.driver_id}}</p>
+            <p>Journey Name: {{w.journey_name}}</p>
+    {% endfor %}
+
+{% else %}
+    <p> No journey data found for {{ term }}</p>
+{% endif %}
+
+{% if cdata %}
+    {% for c in cdata %}
+        <p>Driver: {{c.firstname}} {{c.lastname}}</p>
+        <p>Contact by phone: {{c.phone}}</p>
+        <p>Contact by Email: {{c.email}}</p>
+    {% endfor %}
+{% else %}
+    <p> No journey data found for {{ term }}</p>
+{% endif %}
+
+
+</div>
+{%  endblock %}

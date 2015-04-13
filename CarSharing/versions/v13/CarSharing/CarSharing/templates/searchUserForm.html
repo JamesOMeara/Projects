@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+
+{% if error %}
+<pstyle="color:red;"> {{ msg }} </p>
+<p style="color:#070000;">Please submit a search term.</p>
+{% endif %}
+
+<form action="/searchUser/" method="get">
+<p style="color:#070000;">Please submit a UserName to search. </p>
+    <input type="text" name="u">
+    <input type="submit" value="Search">
+</form>
+
+
+
+{%  endblock %}
+
