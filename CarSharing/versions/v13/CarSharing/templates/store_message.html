@@ -27,7 +27,8 @@
     <ol>
 
     {% for m in mdata %}
-        <li>From: {{ m.messageFrom }}:  {{m.driverMessage}} <br></li>
+        {{m.time}}
+        <li><strong>From: {{ m.messageFrom }}:  {{m.driverMessage}} <br></strong></li>
 
     {% endfor %}
     </ol>
