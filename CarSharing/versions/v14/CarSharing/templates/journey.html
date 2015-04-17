@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Enter Data{% endblock %}
+
+{% block content %}
+
+<form action="/add_wdata/" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Submit">
+</form>
+
+<br>
+<p>Note: Date in format as mm/dd/yyyy Time. eg. 02/02/2015 16:00 </p>
+<p>Note: Price = Expected price of overall journey. </p>
+
+{%  endblock %}

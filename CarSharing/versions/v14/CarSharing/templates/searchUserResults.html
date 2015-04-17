@@ -1,0 +1,69 @@
+
+{% extends "base.html" %}
+
+{% block title %}Search for {{ term }}{% endblock %}
+
+{% block content %}
+
+
+    <p> You searched for <strong>{{ term }}</strong></p>
+    <br><br>
+    
+    
+    
+    {% if wdata %}
+            <div id="menu">
+                  {% for w in wdata %}
+                      <p>Name: {{ w.firstname }} {{w.lastname}}</p>
+                      <p>Gender: {{w.gender}} </p>
+                      <p>State: {{w.client_is}} </p>
+                      <p>Based: {{w.home}} </p>
+                      <p>Phone Number: {{w.phone}} </p>
+                      <p>Email: {{w.email}} </p>
+                          <br>
+                          <br>
+                          <br>
+                  {% endfor %}
+            </div>
+    {% else %}
+    <p> user has no information to show</p>
+    {% endif %}
+    
+    
+    
+    
+    
+    {% if cdata %}
+            <div id="menu">
+                    {% for c in cdata %}
+                        <p>Reg: {{ c.car_reg}}</p>
+                        <p>Description: {{ c.car_desc}}</p>
+                        <p>Seats: {{ c.seats_free}}</p>
+                            <br>
+                    {% endfor %}
+            </div>
+    {% else %}
+    <p>User has no Car Details</p>  
+    {% endif %}
+    <br>
+    <br>
+    
+    
+    
+    
+    {% if rdata %}
+    <p> Journeys {{term}} has</p>
+            <div id="menu">
+            <ol>
+                        {% for r in rdata %}
+                            <li>
+                            <p>Journey name: {{ r.journey_name }}, From: {{r.from_place}} to {{r.to_place}}</p></li>
+                        {% endfor %}
+            </ol>
+            </div>
+
+    {% else %}
+        <p> No journey data found for {{ term }}</p>
+    {% endif %}
+
+{%  endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Mesanger{% endblock %}
+
+{% block content %}
+
+
+{% if error %}
+<pstyle="color:red;"> {{ msg }} </p>
+<p style="color:#070000;">Error sending message no user by this name.</p>
+{% endif %}
+
+<form action="/store_message/" method="post">
+    {% csrf_token %}
+    <table>
+        {{ form.as_table }}
+    </table>
+
+    <input type="submit" value="Send">
+</form>
+
+
+
+<p>Your Messages</p>
+{% if mdata %}
+    <div id="menu"></div>
+    <ol>
+
+    {% for m in mdata %}
+        {{m.time}}
+        <li><strong>From: {{ m.messageFrom }}:  {{m.driverMessage}} <br></strong></li>
+
+    {% endfor %}
+    </ol>
+    </div>
+
+
+{% else %}
+    <p> No messages found.</p>
+{% endif %}
+
+</div>
+{%  endblock %}
+
